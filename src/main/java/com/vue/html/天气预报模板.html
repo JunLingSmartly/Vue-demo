@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>天气预报模板</title>
+    <link rel="stylesheet" href="../css/weather-index.css" />
+    <link rel="stylesheet" href="../css/weather-reset.css" />
+</head>
+<body>
+
+    <div class="wrap" id="app">
+        <div class="search_form">
+            <div class="logo"><img src="../img/logo.png" ></div>
+            <div class="form_group">
+                <input type="text" v-model="city" @keyup.enter="searchWeather"
+                       class="input_txt" placeholder="请输入查询的天气"/>
+                <button class="input_sub">搜索</button>
+            </div>
+            <div>
+                <a href="javascript:;" @click="changeCity('北京')">北京</a>
+                <a href="javascript:;" @click="changeCity('洛阳')">洛阳</a>
+                <a href="javascript:;" @click="changeCity('驻马店')">驻马店</a>
+                <a href="javascript:;" @click="changeCity('郑州')">郑州</a>
+            </div>
+        </div>
+        <ul class="weather_list">
+            <li v-for="item in weatherList">
+                <div class="info_type"><span class="iconfont">{{item.type}}</span></div>
+                <div class="info_temp">
+                    <b>{{item.low}}</b>
+                    ~
+                    <b>{{item.high}}</b>
+                </div>
+                <div class="info_date"><span>{{ item.date }}</span></div>
+            </li>
+        </ul>
+    </div>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- 官网提供的 axios 在线地址 -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!--自己的js-->
+    <script src="../js/main.js"></script>
+</body>
+</html>
